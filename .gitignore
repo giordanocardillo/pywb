@@ -44,3 +44,4 @@ nosetests.xml
 
 # Node
 node_modules/
+.idea

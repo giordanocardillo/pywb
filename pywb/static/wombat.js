@@ -2049,7 +2049,7 @@ var wombat_internal = function($wbwindow) {
         //init_mutation_obs($wbwindow);
 
         // override href and src attrs
-        init_attr_overrides($wbwindow);
+        //init_attr_overrides($wbwindow);
 
 
         init_form_overrides($wbwindow);
