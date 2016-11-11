@@ -27,37 +27,37 @@ class HTMLRewriterMixin(object):
     def _init_rewrite_tags(defmod):
         rewrite_tags = {
             'a':       {'href': defmod},
-            'applet':  {'codebase': 'oe_',
-                        'archive': 'oe_'},
+            #'applet':  {'codebase': 'oe_',
+            #            'archive': 'oe_'},
             'area':    {'href': defmod},
-            'audio':   {'src': 'oe_'},
+            #'audio':   {'src': 'oe_'},
             'base':    {'href': defmod},
             'blockquote': {'cite': defmod},
-            'body':    {'background': 'im_'},
+            #'body':    {'background': 'im_'},
             'button':  {'formaction': defmod},
-            'command': {'icon': 'im_'},
+            #'command': {'icon': 'im_'},
             'del':     {'cite': defmod},
-            'embed':   {'src': 'oe_'},
+            #'embed':   {'src': 'oe_'},
             'head':    {'': defmod},  # for head rewriting
-            'iframe':  {'src': 'if_'},
-            'img':     {'src': 'im_',
-                        'srcset': 'im_'},
+            #'iframe':  {'src': 'if_'},
+            #'img':     {'src': 'im_',
+            #            'srcset': 'im_'},
             'ins':     {'cite': defmod},
             'input':   {'src': 'im_',
                         'formaction': defmod},
             'form':    {'action': defmod},
-            'frame':   {'src': 'fr_'},
-            'link':    {'href': 'oe_'},
+            #'frame':   {'src': 'fr_'},
+            #'link':    {'href': 'oe_'},
             'meta':    {'content': defmod},
-            'object':  {'codebase': 'oe_',
-                        'data': 'oe_'},
-            'param':   {'value': 'oe_'},
+            #'object':  {'codebase': 'oe_',
+            #            'data': 'oe_'},
+            #'param':   {'value': 'oe_'},
             'q':       {'cite': defmod},
-            'ref':     {'href': 'oe_'},
-            'script':  {'src': 'js_'},
-            'source':  {'src': 'oe_'},
-            'video':   {'src': 'oe_',
-                        'poster': 'im_'},
+            #'ref':     {'href': 'oe_'},
+            #'script':  {'src': 'js_'},
+            #'source':  {'src': 'oe_'},
+            #'video':   {'src': 'oe_',
+            #            'poster': 'im_'},
         }
 
         return rewrite_tags
@@ -251,9 +251,9 @@ class HTMLRewriterMixin(object):
             self._wb_parse_context = tag
 
         # attr rewriting
-        #handler = self.rewrite_tags.get(tag)
-        #if not handler:
-        handler = {}
+        handler = self.rewrite_tags.get(tag)
+        if not handler:
+            handler = {}
 
         self.out.write('<' + tag)
 
