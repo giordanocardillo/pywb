@@ -251,9 +251,9 @@ class HTMLRewriterMixin(object):
             self._wb_parse_context = tag
 
         # attr rewriting
-        handler = self.rewrite_tags.get(tag)
-        if not handler:
-            handler = {}
+        #handler = self.rewrite_tags.get(tag)
+        #if not handler:
+        handler = {}
 
         self.out.write('<' + tag)
 
@@ -466,13 +466,13 @@ class HTMLRewriter(HTMLRewriterMixin, HTMLParser):
         return s
 
     def handle_starttag(self, tag, attrs):
-        #self._rewrite_tag_attrs(tag, attrs)
+        self._rewrite_tag_attrs(tag, attrs)
 
         if tag != 'head' or not self._rewrite_head(False):
             self.out.write('>')
 
     def handle_startendtag(self, tag, attrs):
-        #self._rewrite_tag_attrs(tag, attrs)
+        self._rewrite_tag_attrs(tag, attrs)
 
         if tag != 'head' or not self._rewrite_head(True):
             self.out.write('/>')
