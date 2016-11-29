@@ -277,6 +277,11 @@ class HTMLRewriterMixin(object):
                 rw_mod = 'im_'
                 attr_value = self._rewrite_url(attr_value, rw_mod)
 
+            #--mod-- special case: image URL starting with /
+            elif tag == 'img' and attr_name == 'src':
+                if attr_value.startswith('/'):
+                    attr_value = urljoin(self.orig_url, attr_value)
+
             # special case: srcset list
             elif attr_name == 'srcset':
                 rw_mod = handler.get(attr_name, '')
