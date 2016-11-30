@@ -282,6 +282,16 @@ class HTMLRewriterMixin(object):
                 if attr_value.startswith('/'):
                     attr_value = urljoin(self.orig_url, attr_value)
 
+            #--mod-- special case: script URL starting with /
+            elif tag == 'script' and attr_name == 'src':
+                if attr_value.startswith('/'):
+                    attr_value = urljoin(self.orig_url, attr_value)
+
+            #--mod-- special case: link URL starting with /
+            elif tag == 'link' and attr_name == 'href':
+                if attr_value.startswith('/'):
+                    attr_value = urljoin(self.orig_url, attr_value)
+
             # special case: srcset list
             elif attr_name == 'srcset':
                 rw_mod = handler.get(attr_name, '')
