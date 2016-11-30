@@ -47,14 +47,14 @@ class HTMLRewriterMixin(object):
                         'formaction': defmod},
             'form':    {'action': defmod},
             #'frame':   {'src': 'fr_'},
-            #'link':    {'href': 'oe_'},
+            'link':    {'href': 'oe_'},
             'meta':    {'content': defmod},
             #'object':  {'codebase': 'oe_',
             #            'data': 'oe_'},
             #'param':   {'value': 'oe_'},
             'q':       {'cite': defmod},
             #'ref':     {'href': 'oe_'},
-            #'script':  {'src': 'js_'},
+            'script':  {'src': 'js_'},
             #'source':  {'src': 'oe_'},
             #'video':   {'src': 'oe_',
             #            'poster': 'im_'},
@@ -279,16 +279,6 @@ class HTMLRewriterMixin(object):
 
             #--mod-- special case: image URL starting with /
             elif tag == 'img' and attr_name == 'src':
-                if attr_value.startswith('/'):
-                    attr_value = urljoin(self.orig_url, attr_value)
-
-            #--mod-- special case: script URL starting with /
-            elif tag == 'script' and attr_name == 'src':
-                if attr_value.startswith('/'):
-                    attr_value = urljoin(self.orig_url, attr_value)
-
-            #--mod-- special case: link URL starting with /
-            elif tag == 'link' and attr_name == 'href':
                 if attr_value.startswith('/'):
                     attr_value = urljoin(self.orig_url, attr_value)
 
